@@ -2,6 +2,7 @@ package com.practice.book.service;
 
 import com.practice.book.domain.posts.Posts;
 import com.practice.book.domain.posts.PostsRepository;
+import com.practice.book.web.dto.PostsListResponseDto;
 import com.practice.book.web.dto.PostsResponseDto;
 import com.practice.book.web.dto.PostsSaveRequestDto;
 import com.practice.book.web.dto.PostsUpdateRequestDto;
@@ -9,12 +10,22 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 @RequiredArgsConstructor
 @Service
 public class PostsService {
 
     private final PostsRepository postsRepository;
+
+    @Transactional
+    public List<PostsListResponseDto> findAllDesc() {
+        return postsRepository.findAllDesc().stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
+    }
 
     @Transactional
     public long save(PostsSaveRequestDto requestDto) {
