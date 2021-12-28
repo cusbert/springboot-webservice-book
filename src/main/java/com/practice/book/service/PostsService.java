@@ -47,4 +47,11 @@ public class PostsService {
 
         return new PostsResponseDto(entity);
     }
+
+    public void delete (Long id) {
+        Posts posts = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글 없습니다 id=" + id));
+
+        postsRepository.delete(posts);
+    }
 }
