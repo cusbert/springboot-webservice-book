@@ -16,9 +16,9 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
 
         http
-//                .csrf().disable()
-//                .headers().frameOptions().disable()
-//                .and()
+                .csrf().disable()
+                .headers().frameOptions().disable()
+                .and()
                 // URL 별 권한 관리 설정 시작
                 .authorizeRequests()
                 .antMatchers("/", "/css/**", "/images/**", "/js/**", "/profile").permitAll() // 전체 허가
