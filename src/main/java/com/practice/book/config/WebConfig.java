@@ -1,5 +1,6 @@
-package com.practice.book.config.auth;
+package com.practice.book.config;
 
+import com.practice.book.config.auth.LoginUserArgumentResolver;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
