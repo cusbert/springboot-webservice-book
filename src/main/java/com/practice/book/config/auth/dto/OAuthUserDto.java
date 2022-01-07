@@ -26,8 +26,8 @@ public class OAuthUserDto {
         this.picture = picture;
     }
 
-
     public static OAuthUserDto of(String registrationId, String userNameAttributeName,
+        // OAuth2User 에서 반환하는 사용자 정보는 Map 이라 하나씩 변환한다.
         Map<String, Object> attributes) {
 
         if ("naver".equals(registrationId)) {
@@ -39,7 +39,7 @@ public class OAuthUserDto {
     private static OAuthUserDto ofNaver(String userNameAttributeName,
         Map<String, Object> attributes) {
 
-        Map<String,  Object> response = (Map<String, Object>) attributes.get("response");
+        Map<String, Object> response = (Map<String, Object>) attributes.get("response");
         return OAuthUserDto.builder()
             .name((String) response.get("name"))
             .email((String) response.get("email"))
